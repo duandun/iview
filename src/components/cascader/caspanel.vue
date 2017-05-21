@@ -80,7 +80,8 @@
                     this.dispatch('Cascader', 'on-result-change', {
                         lastValue: false,
                         changeOnSelect: this.changeOnSelect,
-                        fromInit: fromInit
+                        fromInit: fromInit,
+                        fromUser: fromUser
                     });
                 } else {
                     this.sublist = [];

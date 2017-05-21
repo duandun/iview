@@ -304,7 +304,7 @@
                 const changeOnSelect = params.changeOnSelect;
                 const fromInit = params.fromInit;
 
-                if (lastValue || changeOnSelect) {
+                if (lastValue || (changeOnSelect && params.fromUser)) {
                     const oldVal = JSON.stringify(this.currentValue);
                     this.selected = this.tmpSelected;
 
@@ -328,6 +328,9 @@
             this.updateSelected(true);
         },
         watch: {
+            tmpSelected (val) {
+                this.selected = val;
+            },
             visible (val) {
                 if (val) {
                     if (this.currentValue.length) {
@@ -360,7 +363,7 @@
                     if (validDataStr !== this.validDataStr) {
                         this.validDataStr = validDataStr;
                         if (!this.isLoadedChildren) {
-                            this.$nextTick(() => this.updateSelected());
+                            this.$nextTick(() => this.updateSelected(true));
                         }
                         this.isLoadedChildren = false;
                     }

@@ -214,7 +214,8 @@
 <template>
     <!--<Cascader :data="data4" :load-data="loadData" style="width: 200px;"></Cascader>-->
     <div>
-        <Cascader :data="data" v-model="model" :load-data="loadData"></Cascader>
+        <Cascader :data="data" v-model="model" :load-data="loadData" change-on-select></Cascader>
+        {{model}}
         <ul>
             <li v-for="(log, idx) in logs" :key="idx">{{log}}</li>
         </ul>
@@ -270,4 +271,3 @@
         }
     }
 </script>
-
